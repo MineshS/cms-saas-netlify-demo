@@ -1,7 +1,6 @@
 import type { ComponentTypeDictionary } from '@remkoj/optimizely-dxp-react'
 import type { ComponentType } from 'react'
 import HeroBlock from "./hero-block"
-import ButtonBlock from './button-block'
 import TextBlock from './text-block'
 import ContainerBlock from './container-block'
 import HighlightBlock from './highlight-block'
@@ -16,10 +15,6 @@ export const Blocks : ComponentTypeDictionary = [
     {
         type: ['Block','HeroBlock'],
         component: HeroBlock as ComponentType
-    },
-    {
-        type: ['Block', 'ButtonBlock'],
-        component: ButtonBlock as ComponentType
     },
     {
         type: ['Block', 'TextBlock' ],
