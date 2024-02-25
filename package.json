@@ -8,6 +8,7 @@
     "packages/remkoj/*"
   ],
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.41.3",
     "@types/source-map-support": "^0.5.10",
     "@yarnpkg/sdks": "^3.1.0",
     "source-map-support": "^0.5.21",
