@@ -1,6 +1,43 @@
 [build]
-  command = "yarn build"
+  command = "yarn workspace frontend build"
   publish = ".next"
+
+  # Add build-related variables here
+  DXP_URL = "https://app-ocxcmish122w0uprod.cms.optimizely.com/"
+  NEXTAUTH_URL = "https://${SITE_DOMAIN}"
+  NEXTAUTH_SECRET = "SECRET-${SITE_DOMAIN}-${DXP_URL}-${NODE_ENV}"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[context.production.environment]
+  # Add production environment variables here
+  SITE_DOMAIN = "${VERCEL_BRANCH_URL}"
+  OPTIMIZELY_CONTENTGRAPH_SECRET = "kxGv/PZ84FRll/ro9pVJgos8goZkMVPpOvoGq5UqSX3oCmol4bELFaFTwdgCy+t9"
+  OPTIMIZELY_CONTENTGRAPH_APP_KEY = "nqrGFlTEoNs4XXGscBHvDHlMWZ3BQapgMUeAyZMCpLxJokjE"
+  OPTIMIZELY_CONTENTGRAPH_SINGLE_KEY = "ezKe4JSOjtilFKfhfOJnGeeUslzNFLAAg4eMZzahJyYbnDgz"
+  OPTIMIZELY_CONTENTGRAPH_GATEWAY = "https://cg.optimizely.com"
+  OPTIMIZELY_CONTENTGRAPH_UPDATE_DELAY = "2000"
+  NEXTAUTH_URL = "https://${SITE_DOMAIN}"
+
+[context.deploy-preview.environment]
+  # Add deploy preview environment variables here
+  SITE_DOMAIN = "deploy-preview-${DEPLOY_PRIME_URL}"
+  NEXTAUTH_SECRET = "SECRET-${SITE_DOMAIN}-${DXP_URL}-${NODE_ENV}"
+
+[context.branch-deploy.environment]
+  # Add branch deploy environment variables here
+  SITE_DOMAIN = "${DEPLOY_PRIME_URL}"
+  NEXTAUTH_SECRET = "SECRET-${SITE_DOMAIN}-${DXP_URL}-${NODE_ENV}"
+
+[context.split-test.environment]
+  # Add split test environment variables here
+  SITE_DOMAIN = "split-test-${DEPLOY_PRIME_URL}"
+  NEXTAUTH_SECRET = "SECRET-${SITE_DOMAIN}-${DXP_URL}-${NODE_ENV}"
+
+# Global environment variables (available in all contexts)
+[build.environment]
+  # Add global environment variables here
+  DXP_DEBUG = "0"
+  QUERY_LOG = "0"
+  FRONTEND_PUBLISH_TOKEN = "optly-PUBLISH_TOKEN"
