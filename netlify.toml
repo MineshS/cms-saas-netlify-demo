@@ -1,6 +1,5 @@
 [build]
   command = "yarn workspace frontend build"
-  publish = ".next"
 
   # Add build-related variables here
   DXP_URL = "https://app-ocxcmish122w0uprod.cms.optimizely.com/"
